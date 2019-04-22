@@ -69,9 +69,11 @@ passportSetup(app);
 const index = require('./routes/index');
 app.use('/', index);
 // link whole file to app by requiring auth-routes file. 
-// app.js can use auth-routes file by requiring it in the app.use.
+// app.js can use ALL auth-routes file by requiring it in the app.use.
 // '/api' can be any name, just to differentiate it between frontend/backend
 app.use('/api', require('./routes/auth-routes'));
+
+app.use('/api', require('./routes/file-upload-routes'));
 
 
 module.exports = app;
