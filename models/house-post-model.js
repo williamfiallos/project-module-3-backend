@@ -18,6 +18,7 @@ const housePostSchema = new Schema({
       required: true,
     },
     houseType: {
+      type: String,
       enum:[ "Apartment", "Condo", "Efficiency", "Studio", "Townhouse" ],
       required: true,
     }, 

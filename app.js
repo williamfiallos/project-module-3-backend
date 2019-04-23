@@ -75,5 +75,7 @@ app.use('/api', require('./routes/auth-routes'));
 
 app.use('/api', require('./routes/file-upload-routes'));
 
+app.use('/api', require('./routes/house-post-routes'));
+
 
 module.exports = app;
