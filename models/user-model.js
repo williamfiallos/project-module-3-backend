@@ -24,8 +24,20 @@ const userSchema = new Schema({
       required: true,
       minlength: 2
     },
+    phone: {
+      type: Number,
+      required: true
+    },
     profileImage: {
       type: String,
+    }, 
+    posts: {
+      cars: [{
+        type: Schema.Types.ObjectId, ref: 'CarPost'
+      }],
+      houses: [{
+        type: Schema.Types.ObjectId, ref: 'HousePost'
+      }]
     }
 }, {
   timestamps: true
