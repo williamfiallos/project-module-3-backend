@@ -1,41 +1,61 @@
-//test
+const mongoose = require("mongoose");
 
+const Schema = mongoose.Schema;
 
-// const mongoose = require('mongoose');
+const carPostSchema = new Schema(
+  {
+    owner: { type: Schema.Types.ObjectId, ref: "User" },
+    title: {
+      type: String,
+      required: true,
+    },
+    image: {
+      type: String,
+      required: true
+    },
+    condition: {
+      type: String,
+      require: true
+    },
+    cylinders: {
+      type: String,
+      require: true
+    },
+    drive: {
+      type: String,
+      required: true
+    },
+    fuel: {
+      type: String,
+      required: true
+    },
+    odometer: {
+      type: String,
+      required: true
+    },
+    paintColor: {
+      type: String,
+      required: true
+    },
+    transmission: {
+      type: String,
+      required: true
+    },
+    type: {
+      type: String,
+      // can only be one of the following options
+      enum: ["Coupe", "Convertible", "Sedan", "Hatchback", "Crossover", "SUV"]
+    },
+    description: {
+      type: String,
+      required: true,
+      minlength: 20,
+    }
+  },
 
-// const Schema = mongoose.Schema;
+  {
+    timestamps: true
+  }
+);
 
-// const userSchema = new Schema({
-//     email: {
-//       type: String,
-//       required: true,
-//       unique: true,
-//       // match: /^.+@.+\..+$/
-//     },
-//     password: {
-//       type: String,
-//       required: true,
-//       minlength: 3
-//     },
-//     firstName: {
-//       type: String,
-//       required: true,
-//       minlength: 2
-//     },
-//     lastName: {
-//       type: String,
-//       required: true,
-//       minlength: 2
-//     },
-//     profileImage: {
-//       type: String,
-//     }
-// }, {
-//   timestamps: true
-// })
-
-// // const User = mongoose.model("User", userSchema);
-// // module.exports = User;
-// // same as below:
-
-// module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("CarPost", carPostSchema);
