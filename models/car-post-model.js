@@ -50,6 +50,10 @@ const carPostSchema = new Schema(
       type: String,
       required: true,
       minlength: 20,
+    },
+    price: {
+      type: Number,
+      required: true
     }
   },
 
