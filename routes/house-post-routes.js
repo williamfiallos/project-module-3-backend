@@ -88,6 +88,7 @@ router.delete('/delete-house/:id', (req, res, next) => {
   }
   HousePost.findByIdAndDelete(req.params.id)
   .then( () => res.json({ message: `House ${req.params.id} deleted!` }) )
+    // NOW UPDATE USER'S HOUSE POST THAT WAS DELETED
   .catch( err => next(err) )
 
 })
