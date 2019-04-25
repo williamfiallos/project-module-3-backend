@@ -26,7 +26,7 @@ const userSchema = new Schema({
     },
     phone: {
       type: Number,
-      required: true
+      // not "required: true" for authentication for backend
     },
     profileImage: {
       type: String,
