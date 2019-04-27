@@ -9,6 +9,9 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 
+const cors = require('cors');
+
+
 const session = require('express-session');
 
 const passportSetup = require('./config/passport/passport-setup');
@@ -59,10 +62,12 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 // allow CORS (Cross Origin Resource Sharing)
 app.use(cors({
+
   // allows other origins/domains to send cookies
   credentials: true,
   // the array of domains/origins we want to allow cookies from (in our case that is our React app, which runs on port 3000)
   origin: [ 'http://localhost:3000'  ]
+
 }));
 
 
@@ -91,5 +96,6 @@ app.use('/api', require('./routes/house-post-routes'));
 
 app.use('/api', require('./routes/car-post-routes'));
 
+app.use('/api', require('./routes/allListings-routes'));
 
 module.exports = app;
