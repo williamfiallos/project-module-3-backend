@@ -13,6 +13,8 @@ const session = require('express-session');
 
 const passportSetup = require('./config/passport/passport-setup');
 
+// require CORS
+const cors = require('cors');
 
 mongoose
   // .connect('mongodb://localhost/craigslist-backend', {useNewUrlParser: true})
@@ -53,6 +55,16 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
+
+
+// allow CORS (Cross Origin Resource Sharing)
+app.use(cors({
+  // allows other origins/domains to send cookies
+  credentials: true,
+  // the array of domains/origins we want to allow cookies from (in our case that is our React app, which runs on port 3000)
+  origin: [ 'http://localhost:3000'  ]
+}));
+
 
 // handle session here:
 // app.js
