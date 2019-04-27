@@ -87,9 +87,19 @@ router.delete('/delete-house/:id', (req, res, next) => {
     return;
   }
   HousePost.findByIdAndDelete(req.params.id)
-  .then( () => res.json({ message: `House ${req.params.id} deleted!` }) )
-    // NOW UPDATE USER'S HOUSE POST THAT WAS DELETED
-  .catch( err => next(err) )
+  // .then( () => res.json({ message: `House ${req.params.id} deleted!` }) )
+  // note the fat arrow on a one-liner above does not require a curly brace; 
+  // but on a multiple-liner you need curly brace to be able to get the whole as an object
+  .then( () => {
+    res.json({ message: `House ${req.params.id} deleted!` })
+    // Now delete post from user. No need to go to user model, since user is in session already, therefore:
+    req.user.posts.houses.pull(req.params.id)
+    // Difference between ._id and .id is ._id is from the database, whereas .id is the placeholder of the URL!
+    req.user.save() // remember the save method!
+  })
+  // no need for other .catch since there is no promise to update user.
+
+  .catch( err => next(err) ) // closes the HousePost.findByIDAndDelete
 
 })
 
