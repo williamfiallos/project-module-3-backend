@@ -9,6 +9,9 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 
+const cors = require('cors');
+
+
 const session = require('express-session');
 
 const passportSetup = require('./config/passport/passport-setup');
@@ -54,6 +57,16 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
 
+
+// allow CORS (Cross Origin Resource Sharing)
+app.use(cors({
+  // credentials: true => allows other origins / domains to send cookie
+  credentials: true,
+  // origin => array of domains that can receive cookies
+  origin: [ 'http://localhost:3000']
+}));
+
+
 // handle session here:
 // app.js
 app.use(session({
@@ -79,5 +92,6 @@ app.use('/api', require('./routes/house-post-routes'));
 
 app.use('/api', require('./routes/car-post-routes'));
 
+app.use('/api', require('./routes/allListings-routes'));
 
 module.exports = app;
