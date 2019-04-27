@@ -77,7 +77,12 @@ router.delete('/delete-car/:id', (req,res,next) => {
   }
 
   CarPost.findOneAndDelete(req.params.id)
-  .then(() => res.json({message: `Car Post with id ${req.params.id} has been deleted!`}))
+  .then(() => {
+    res.json({message: `Car Post with id ${req.params.id} has been deleted!`})
+    req.user.posts.cars.pull(req.params.id)
+    req.user.save();
+  })
+  
   .catch(error => next(error))
 })
 
