@@ -12,15 +12,15 @@ const HousePost = require('../models/house-post-model');
 ///////////// POST ROUTE TO POST A HOUSE ////////////
 // '/house-post' can be named anything, just know this one is for the backend as opposed to the frontend.
 router.post('/house-post', (req, res, next) => {
-  const { title, image, address, houseType, squareFeet, totalRooms, totalBathrooms, parking, petsAllowed, price, description } = req.body;
+  const { title, images, address, houseType, squareFeet, totalRooms, totalBathrooms, parking, petsAllowed, price, description } = req.body;
   // declare user variable to be able to refer to req.user._id to update post; req.user is given from the session 
   const user = req.user
 
-    if (title == '' || image == '' || address == '' || houseType == '' || squareFeet == '' || totalRooms == '' || totalBathrooms == '' || parking == '' || petsAllowed == '' || price == '' || description == ''){
+    if (title == '' || !images || address == '' || houseType == '' || squareFeet == '' || totalRooms == '' || totalBathrooms == '' || parking == '' || petsAllowed == '' || price == '' || description == ''){
       res.status(401).json({ message: "All fields must be filled!"})
     }
 
-    HousePost.create({ title, image, address, houseType, squareFeet, totalRooms, totalBathrooms, parking, petsAllowed, price, description })
+    HousePost.create({ title, images, address, houseType, squareFeet, totalRooms, totalBathrooms, parking, petsAllowed, price, description })
     .then(housePost => {
       // send the received results from the DB as JSON to the client with res.json. Note: good practice to check 
       // if whether you send this before the first ".then" or before the first ".catch" to the frontend

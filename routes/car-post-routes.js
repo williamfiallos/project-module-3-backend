@@ -9,7 +9,6 @@ const CarPost = require('../models/car-post-model');
 // POST route for new CarPost
 router.post('/car-post', (req,res,next) => {
 
-  console.log(req.body);
   
   const {title, images, condition, cylinders, drive, fuel, odometer, paintColor, transmission, type, description, price } = req.body;
   const user = req.user._id

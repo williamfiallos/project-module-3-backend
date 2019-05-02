@@ -5,7 +5,7 @@ const fileUploader = require('../config/upload-setup/cloudinary');
 
 // note: this is not the router for the frontend, just the backend when we use axios for instance. 
 router.post('/upload-file', fileUploader.array('submittedFile', 3), (req, res, next) => {
-  console.log('is there file: ', req.files)
+
   // when testing in Postman, make sure to put for "key" the name of the 
   // parameter above 'submittedFile' since the function requires parameters to work.
     if (!req.files){
@@ -31,8 +31,6 @@ router.post('/upload-file', fileUploader.array('submittedFile', 3), (req, res, n
       }
       files.push(singleFile)
     })
-
-    console.log('files: ', files)
 
     res.json(files);
 })
