@@ -8,15 +8,18 @@ const CarPost = require('../models/car-post-model');
 
 // POST route for new CarPost
 router.post('/car-post', (req,res,next) => {
-  const {title, image, condition, cylinders, drive, fuel, odometer, paintColor, transmission, type, description, price } = req.body;
+
+  console.log(req.body);
+  
+  const {title, images, condition, cylinders, drive, fuel, odometer, paintColor, transmission, type, description, price } = req.body;
   const user = req.user._id
 
-  if(title == '' || image == '' || condition == '' || cylinders == '' || drive == '' || fuel == '' || odometer == '' || paintColor == '' || transmission == '' || type == '' || description == '' || price == '') {
+  if(title == '' || !images || condition == '' || cylinders == '' || drive == '' || fuel == '' || odometer == '' || paintColor == '' || transmission == '' || type == '' || description == '' || price == '') {
     res.status(401).json({message: "Please enter all feilds"})
 
   }
 
-  CarPost.create({title, image, condition, cylinders, drive, fuel, odometer, paintColor, transmission, type, description, price})
+  CarPost.create({title, images, condition, cylinders, drive, fuel, odometer, paintColor, transmission, type, description, price})
   .then(carPost => {
   res.json(carPost)
 

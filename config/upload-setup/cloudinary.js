@@ -11,8 +11,8 @@ cloudinary.config({
 var storage = cloudinaryStorage({
   cloudinary,
   folder: 'final-project-gallery', // The name of the folder in cloudinary
-  allowedFormats: ['jpg', 'png'],
-  // params: { resource_type: 'raw' }, => this is in case you want to upload other type of files, not just images
+  // allowedFormats: ['jpg', 'png'],
+  // params: { resource_type: 'raw' }, // => this is in case you want to upload other type of files, not just images
   filename: function (req, res, cb) {
     cb(null, res.originalname); // The file on cloudinary would have the same name as the original file name
   }
