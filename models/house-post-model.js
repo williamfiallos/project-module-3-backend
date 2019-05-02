@@ -36,8 +36,7 @@ const housePostSchema = new Schema({
       required: true,
     },
     parking: {
-      type: String,
-      enum: [ "1", "2", "3", "None" ],
+      type: Number,
       required: true
     },
     petsAllowed: {
