@@ -9,7 +9,7 @@ const carPostSchema = new Schema(
       type: String,
       required: true,
     },
-    image: [{
+    images: [{
       type: String,
       required: true
     }],
