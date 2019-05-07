@@ -55,4 +55,4 @@ const housePostSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model("housePost", housePostSchema);
+module.exports = mongoose.model("HousePost", housePostSchema);
