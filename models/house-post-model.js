@@ -5,6 +5,10 @@ const Schema = mongoose.Schema;
 const housePostSchema = new Schema({
     owner: { 
       type: Schema.Types.ObjectId, ref: 'User'},
+      postType: {
+        type: String,
+        default: "house"
+      },
     title: {
       type: String,
       required: true,

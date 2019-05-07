@@ -5,6 +5,10 @@ const Schema = mongoose.Schema;
 const carPostSchema = new Schema(
   {
     owner: { type: Schema.Types.ObjectId, ref: "User" },
+    postType: {
+      type: String,
+      default: "car"
+    },
     title: {
       type: String,
       required: true,
