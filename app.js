@@ -4,7 +4,7 @@ const bodyParser   = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express      = require('express');
 const favicon      = require('serve-favicon');
-const hbs          = require('hbs');
+//const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
@@ -47,8 +47,8 @@ app.use(require('node-sass-middleware')({
 }));
       
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+//app.set('views', path.join(__dirname, 'views'));
+//app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
@@ -64,7 +64,7 @@ app.use(cors({
   // allows other origins/domains to send cookies
   credentials: true,
   // the array of domains/origins we want to allow cookies from (in our case that is our React app, which runs on port 3000)
-  origin: [ 'http://localhost:3000'  ]
+  origin: [ 'http://localhost:3000', 'https://craigslisttwopointoh.herokuapp.com/'  ]
 
 }));
 
@@ -95,5 +95,10 @@ app.use('/api', require('./routes/house-post-routes'));
 app.use('/api', require('./routes/car-post-routes'));
 
 app.use('/api', require('./routes/allListings-routes'));
+
+app.use((req, res, next) => {
+  // If no routes match, send them the React HTML.
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 module.exports = app;
