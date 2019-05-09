@@ -98,7 +98,7 @@ app.use('/api', require('./routes/allListings-routes'));
 
 app.use((req, res, next) => {
   // If no routes match, send them the React HTML.
-  res.sendFile(__dirname + "./public/index.html");
+  res.sendFile(__dirname + "/public/index.html");
  });
 
 
