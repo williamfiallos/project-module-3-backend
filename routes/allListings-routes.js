@@ -15,16 +15,17 @@ router.get("/all-listings", (req, res, next) => {
       HousePost.find()
         .then(allHouses => {
           allListings.push(...allHouses);
-          res.json(allListings);
+          setTimeout(() => {
+            res.json(allListings);
+          }, 500);
         })
         .catch(error => next(error));
     })
     .catch(error => next(error));
 });
 
-router.get("/my-listings", (req, res, next) => {
-  
 
+router.get("/my-listings", (req, res, next) => {
   User.findOne(req.user._id)
     .populate({ path: "posts.cars"})
     .populate({ path: "posts.houses" })
