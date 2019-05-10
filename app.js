@@ -64,7 +64,7 @@ app.use(cors({
   // allows other origins/domains to send cookies
   credentials: true,
   // the array of domains/origins we want to allow cookies from (in our case that is our React app, which runs on port 3000)
-  origin: [ 'http://localhost:3000', 'https://craigslist2point0.herokuapp.com'  ]
+  origin: [ 'http://localhost:3000' ]
 
 }));
 
@@ -99,7 +99,7 @@ app.use('/api', require('./routes/allListings-routes'));
 app.use((req, res, next) => {
   // If no routes match, send them the React HTML.
   res.sendFile(__dirname + "/public/index.html");
- });
+});
 
 
 
