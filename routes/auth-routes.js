@@ -26,6 +26,9 @@ router.post('/signup', (req, res, next) => {
       return 
     }
   })
+  .catch(err => {
+    next(err);
+  })
 
   // encrypt the submitted password before saving
   const salt = bcrypt.genSaltSync(bcryptSalt);
