@@ -27,7 +27,8 @@ const housePostSchema = new Schema({
   },
   houseType: {
     type: String,
-    enum: ["Apartment", "Condo", "Efficiency", "Studio", "Townhouse"],
+    // can only be one of the following options
+    enum: ["house", "apartment", "condo", "studio", "townhouse"],
     required: true
   },
   squareFeet: {
@@ -49,7 +50,7 @@ const housePostSchema = new Schema({
   },
   petsAllowed: {
     type: String,
-    enum: ["Yes", "No"]
+    enum: ["yes", "no"]
   },
   price: {
     type: Number,
@@ -59,7 +60,7 @@ const housePostSchema = new Schema({
   description: {
     type: String,
     required: true,
-    minlength: 20
+    minlength: 5
   }
 });
 

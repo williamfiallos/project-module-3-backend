@@ -48,12 +48,12 @@ const carPostSchema = new Schema(
     type: {
       type: String,
       // can only be one of the following options
-      enum: ["Coupe", "Convertible", "Sedan", "Hatchback", "Crossover", "SUV"]
+      enum: ["coupe", "convertible", "sedan", "hatchback", "crossover", "suv"]
     },
     description: {
       type: String,
       required: true,
-      minlength: 20,
+      minlength: 5,
     },
     price: {
       type: Number,

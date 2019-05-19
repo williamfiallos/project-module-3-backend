@@ -15,9 +15,7 @@ router.get("/all-listings", (req, res, next) => {
       HousePost.find()
         .then(allHouses => {
           allListings.push(...allHouses);
-          // setTimeout(() => {
             res.json(allListings);
-          // }, 500);
         })
         .catch(error => next(error));
     })
